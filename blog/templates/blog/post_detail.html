@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post">}
+    {% include 'blog/base.html' %}
+    {% if post.published_date %}
+    <div class="date">
+    {{ post.published_date }}
+    </div>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'blog:post_edit' pk=post.pk %}"><span class="glyphicon glyphicon=pencil"></span></a>
+    {% endif %}
+
+    <h1>{{post.title}}</h1>
+    <p>{{ post.text|linebreaksbr }}</p>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'blog:post_delete' pk=post.pk %}"><span class="glyphicon glyphicon=pencil">삭제</span></a>
+    {% endif %}
+
+</div>
+{% endblock %}

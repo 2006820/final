@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block static %} result.html {% endblock %}
+
+{% block content %}
+<div id="wrap">
+    <h1>{{question.question_text}}</h1>
+    <table>
+        <tr>
+            <th>문항</th>
+            <th>응답수</th>
+        </tr>
+        {% for choice in question.choice_set.all %}
+        <tr>
+        	<td>{{choice.choice_text}}</td>
+            <td>{{choice.votes}} vote{{choice.votes|pluralize}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="2">
+                <input type="button" value="투표하기" onclick="location='/polls'">
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

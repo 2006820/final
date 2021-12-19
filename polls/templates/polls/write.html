@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block static %} write.html { % endblock % }
+
+</head>
+
+{% block content %}
+<div id="wrap"><h1> write (설문 등록폼) </h1>
+<form method="post" action="insert">
+
+    {% csrf_token%}
+
+  <table>
+    <tr><td>질문</td><td><input type="text" name="question"></td></tr>
+    <tr><td>응답1</td><td><input type="text" name="ans1"></td></tr>
+    <tr><td>응답2</td><td><input type="text" name="ans2"></td></tr>
+    <tr><td>응답3</td><td><input type="text" name="ans3"></td></tr>
+    <tr><td>응답4</td><td><input type="text" name="ans4"></td></tr>
+    <tr><td>상태</td><td><input type="text" name="status"></td></tr>
+    <tr><input type="submit"></tr>
+  </table>
+
+</form>
+</div>
+{% endblock %}

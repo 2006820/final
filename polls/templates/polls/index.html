@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block static %} Title {% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+
+<h1>질문 목록</h1>
+{% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+        {% endfor %}
+    </ul>
+    <input type="button" value="결과확인" onclick="#">
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+{% endblock %}
